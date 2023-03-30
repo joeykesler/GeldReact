@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+.pictureContainer {
+  width: 680px;
+}
+.Hero {
+  width: 100%;
+
+  flex-flow: nowrap;
+  display: flex;
+}
