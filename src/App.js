@@ -1,23 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Login from "./Login";
+import Navbar from "./Components/Navbar/Navbar";
+import Box from "@mui/material/Box";
+import { Stack, Typography, TextField, Button } from "@mui/material";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <div className="pageLayout">
+        <div className="Hero">
+          <Box sx={{ width: "60%" }}>
+            <span width="100%">
+              <img
+                src="https://images.ctfassets.net/c5bd0wqjc7v0/4wIqz75f85ZdWPycY3Iggj/2c00a25445cd0ee6840fc67860e8ffdd/Hero.png?fm=webp&q=100&w=1180"
+                width={"100%"}
+              ></img>
+            </span>
+          </Box>
+          <Stack
+            direction={"column"}
+            width={"40%"}
+            sx={{ display: "flex", justifyContent: "center", height: "auto" }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography variant="h2">The future of money is here</Typography>
+            </Box>
+            <Box sx={{ marginBottom: "60px" }}>
+              <Typography fontSize={"32px"}>
+                Over 108 million people and businesses trust us to buy, sell,
+                and manage crypto.
+              </Typography>
+            </Box>
+            <Box>
+              <TextField
+                required
+                id="outlined-required"
+                label="Required"
+                defaultValue="Hello World"
+                sx={{ width: "60%", mr: "25px" }}
+              />
+              <Button
+                variant="contained"
+                sx={{ height: "100%", color: "rgb(0, 82, 255)" }}
+              >
+                <Typography color={"white"}>SignUp</Typography>
+              </Button>
+            </Box>
+          </Stack>
+
+          <div className="SignUp"></div>
+        </div>
+      </div>
     </div>
   );
 }
