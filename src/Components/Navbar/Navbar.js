@@ -134,7 +134,14 @@ function Navbar() {
             ) : (
               <Box>
                 <Button variant="outline">
-                  <Typography sx={{ color: "rgb(0, 82, 255)" }}>
+                  <Typography 
+                  component="a" 
+                  href="/login" 
+                  sx={{ 
+                    color: "rgb(0, 82, 255)",
+                    textDecoration: "none"
+                   }}
+                  >
                     Sign in
                   </Typography>
                 </Button>

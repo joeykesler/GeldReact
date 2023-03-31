@@ -1,5 +1,6 @@
 import './Login.css';
 import { useState, useEffect } from 'react'
+import Navbar from './Components/Navbar/Navbar';
 
 function Login() {
 
@@ -48,6 +49,7 @@ function Login() {
 
     return (
         <div>
+            <Navbar/>
             <h1>Login</h1>
             <div>
                 <input type="text" value={email} onChange={(e) => handleEmail(e)} /><br/>
