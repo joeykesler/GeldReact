@@ -1,0 +1,14 @@
+{
+    "Portfolios": {
+        "user@email.com": {
+            "1": {
+                "name": "My Portfolio",
+                "stocks": [1,2]
+            },
+            "2": {
+                "name": "My Other Portfolio",
+                "stocks": [3]
+            }
+        }
+    }
+}

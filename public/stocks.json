@@ -1,0 +1,19 @@
+{
+    "Stocks": [
+        {
+            "id": 1,
+            "name": "Apple",
+            "value": 200.12
+        },
+        {
+            "id": 2,
+            "name": "Microsoft",
+            "value": 128.98
+        },
+        {
+            "id": 3,
+            "name": "Google",
+            "value": 89.88
+        }
+    ]
+}

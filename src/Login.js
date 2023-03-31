@@ -36,7 +36,7 @@ function Login() {
     // Handle Submit Login Form and Set Current User
     function handleLogin() {
         let user = users[email]["user"];
-        if(user!=undefined && users[email].pass == pass) {
+        if(user!==undefined && users[email].pass === pass) {
             setMsg('Login Successful');
             setCurrentUser(user);
             localStorage.setItem("currentUser", currentUser);
