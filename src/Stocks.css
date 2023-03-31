@@ -1,0 +1,12 @@
+body {
+    background: #eee;
+}
+
+.stocksList {
+    margin: 15px auto;
+    width: 100% !important;
+    max-width: 360px;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+}

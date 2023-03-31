@@ -1,4 +1,5 @@
-
+import Box from "@mui/material/Box";
+import { Stack, Typography, TextField, Button } from "@mui/material";
 
 function StockCard(props) {
     

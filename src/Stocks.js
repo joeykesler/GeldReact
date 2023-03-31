@@ -1,6 +1,11 @@
 import Navbar from "./Components/Navbar/Navbar";
 import { useState, useEffect } from 'react';
 import StockCard from "./Components/StockCard";
+import React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import './Stocks.css';
 
 function Stocks() {
 
@@ -15,26 +20,35 @@ function Stocks() {
                 console.log(data);
                 setAllStocks(data.Stocks)
             });
-            // return result 
         }
         getStocks();
         console.log(allStocks);
     }, []);
 
+
     return(
         <div>
             <Navbar />
-            <div className="stocksWrapper">
+            
+            {/* <div className="stocksWrapper">
                 {allStocks.map((stock, index) => {
                     console.log(stock);
                     return(
                         <StockCard key={index} stock={stock} />
                     )
                 })}
-            </div>
+            </div> */}
+            <List>
+                {allStocks.map((stock, index) => (
+                <ListItem key={index}  className="stocksList">
+                    <ListItemText primary={stock.name} />
+                    <ListItemText primary={"$"+stock.value} />
+                </ListItem>
+                ))}
+            </List>
         </div>
-        
     );
+
 }
 
 export default Stocks;

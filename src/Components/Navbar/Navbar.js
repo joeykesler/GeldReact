@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
 const pages = ["Explore", "Dashboard", "News"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Dashboard"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,6 +36,19 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogout = () => {
+    setSignInStatus(false);
+    localStorage.removeItem('currentUser');
+    handleCloseUserMenu();
+    window.location.href = '/';
+  }
+
+  React.useEffect(() => {
+    if(localStorage.getItem('currentUser')!==null ) {
+      setSignInStatus(true);
+    }
+  })
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "white" }}>
@@ -172,6 +185,9 @@ function Navbar() {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+              <MenuItem onClick={handleLogout}>
+                  <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
