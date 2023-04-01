@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { Link, Routes, Route, RouterLink } from "react-router-dom";
+import Dashboard from "../../Pages/Dashboard";
 
 const pages = ["Explore", "Dashboard", "News"];
 const settings = ["Profile", "Account", "Dashboard"];
@@ -39,16 +41,16 @@ function Navbar() {
 
   const handleLogout = () => {
     setSignInStatus(false);
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem("currentUser");
     handleCloseUserMenu();
-    window.location.href = '/';
-  }
+    window.location.href = "/";
+  };
 
   React.useEffect(() => {
-    if(localStorage.getItem('currentUser')!==null ) {
+    if (localStorage.getItem("currentUser") !== null) {
       setSignInStatus(true);
     }
-  })
+  });
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "white" }}>
@@ -58,8 +60,8 @@ function Navbar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -80,7 +82,7 @@ function Navbar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="black"
             >
               <MenuIcon />
             </IconButton>
@@ -103,12 +105,10 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem
-                  href="https://nextjs.org/docs"
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                >
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <Link to={`/${page}`}>{page}</Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -132,7 +132,12 @@ function Navbar() {
                   display: "block",
                 }}
               >
-                {page}
+                <Link
+                  style={{ textDecoration: "none", color: "black" }}
+                  to={`/${page}`}
+                >
+                  {page}
+                </Link>
               </Button>
             ))}
           </Box>
@@ -147,13 +152,13 @@ function Navbar() {
             ) : (
               <Box>
                 <Button variant="outline">
-                  <Typography 
-                  component="a" 
-                  href="/login" 
-                  sx={{ 
-                    color: "rgb(0, 82, 255)",
-                    textDecoration: "none"
-                   }}
+                  <Typography
+                    component="a"
+                    href="/login"
+                    sx={{
+                      color: "rgb(0, 82, 255)",
+                      textDecoration: "none",
+                    }}
                   >
                     Sign in
                   </Typography>
@@ -186,12 +191,15 @@ function Navbar() {
                 </MenuItem>
               ))}
               <MenuItem onClick={handleLogout}>
-                  <Typography textAlign="center">Logout</Typography>
+                <Typography textAlign="center">Logout</Typography>
               </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
       </Container>
+      <Routes>
+        <Route path="/Dashboard" element={<Dashboard />} />
+      </Routes>
     </AppBar>
   );
 }
