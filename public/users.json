@@ -1,7 +1,7 @@
 {
     "data" : {
         "user@email.com": {
-            "pass": "test",
+            "pass": "$2a$10$CwTycUXWue0Thq9StjUM0uVcaYLhxDhxw/on5O4CIwF0K5Yph9pCK",
             "user": {
                 "email": "user@email.com",
                 "funds": 100.00,

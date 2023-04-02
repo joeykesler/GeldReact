@@ -1,6 +1,11 @@
 import './Login.css';
 import { useState, useEffect } from 'react'
 import Navbar from './Components/Navbar/Navbar';
+import sha256 from 'crypto-js/sha256';
+import { AES } from 'crypto-js';
+import CryptoJS from 'crypto-js';
+import bcrypt from 'bcryptjs';
+
 
 function Login() {
 
@@ -35,11 +40,14 @@ function Login() {
 
     // Handle Submit Login Form and Set Current User
     function handleLogin() {
-        let user = users[email]["user"];
-        if(user!==undefined && users[email].pass === pass) {
+        const hashedPassword = bcrypt.hashSync(pass, '$2a$10$CwTycUXWue0Thq9StjUM0u');
+        console.log(hashedPassword);
+        let user = users[email];
+        if(user!==undefined && users[email].pass === hashedPassword) {
             setMsg('Login Successful');
             setCurrentUser(user);
             localStorage.setItem("currentUser", currentUser);
+            window.location.href = '/';
             // TODO: Redirect to user page on success
 
         } else {
