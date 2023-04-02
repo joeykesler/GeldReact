@@ -1,0 +1,9 @@
+.form {
+    padding: 20px;
+}
+label {
+    display: inline-block;
+    padding-right: 10px;
+    min-width: 100px;
+    margin: 10px 0;
+}

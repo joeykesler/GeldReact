@@ -1,18 +1,20 @@
-import './Login.css';
-import { useState, useEffect } from 'react'
-import Navbar from './Components/Navbar/Navbar';
-import sha256 from 'crypto-js/sha256';
-import { AES } from 'crypto-js';
-import CryptoJS from 'crypto-js';
-import bcrypt from 'bcryptjs';
+import "./Login.css";
+import { useState, useEffect } from "react";
+import Navbar from "./Components/Navbar/Navbar";
+import bcrypt from "bcryptjs";
+
 
 
 function Login() {
 
     // Page Variables
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
-    const [msg, setMsg] = useState('');
+    const [email, setEmail] = useState("");
+    const [pass, setPass] = useState("");
+    const [newEmail, setNewEmail] = useState("");
+    const [newPass, setNewPass] = useState("");
+    const [msg, setMsg] = useState("");
+
+    // const fs = require('fs');
 
     // Object Variables
     const [users, setUsers] = useState({});
@@ -20,7 +22,7 @@ function Login() {
     
     // Get All Users
     useEffect(() => {
-        fetch('./users.json')
+        fetch("./users.json")
         .then(res => {
             return res.json();
         }).then(data => setUsers(data.data));
@@ -33,36 +35,80 @@ function Login() {
 
     // Update local pass var
     function handlePass(e) {
-        // TODO: Hash password
-
         setPass(e.target.value);
+    }
+
+    // Update local email var
+    function handleNewEmail(e) {
+        setNewEmail(e.target.value);
+    }
+
+    // Update local pass var
+    function handleNewPass(e) {
+        setNewPass(e.target.value);
     }
 
     // Handle Submit Login Form and Set Current User
     function handleLogin() {
-        const hashedPassword = bcrypt.hashSync(pass, '$2a$10$CwTycUXWue0Thq9StjUM0u');
+        const hashedPassword = bcrypt.hashSync(pass, "$2a$10$CwTycUXWue0Thq9StjUM0u");
         console.log(hashedPassword);
         let user = users[email];
         if(user!==undefined && users[email].pass === hashedPassword) {
-            setMsg('Login Successful');
+            setMsg("Login Successful");
             setCurrentUser(user);
             localStorage.setItem("currentUser", currentUser);
-            window.location.href = '/';
-            // TODO: Redirect to user page on success
+            window.location.href = "/Dashboard";
+        } else {
+            setMsg("Login Failed");
+        }
+    }
+
+    function handleCreateAccount() {
+        
+        if(users[newEmail] == undefined) {
+            const hashedPassword = bcrypt.hashSync(pass, "$2a$10$CwTycUXWue0Thq9StjUM0u");
+            let tempUsers = users;
+            tempUsers[newEmail] = {
+                "pass": hashedPassword,
+                "user": {
+                    "email": newEmail,
+                    "funds": 0,
+                    "portfolios": []
+                }
+            };
+            setUsers(tempUsers);
+            console.log("users", users);
+            fetch('http://localhost:3000/users.json', {
+                method: 'POST',
+                body: JSON.stringify({"data": users}),
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+            });
 
         } else {
-            setMsg('Login Failed');
+            setMsg("User Already Exists");
         }
     }
 
     return (
         <div>
             <Navbar/>
-            <h1>Login</h1>
-            <div>
-                <input type="text" value={email} onChange={(e) => handleEmail(e)} /><br/>
-                <input type="text" value={pass} onChange={(e) => handlePass(e)} /><br/>
-                <button onClick={handleLogin}>Login</button>
+            <div className="form loginForm">
+                <h1>Login</h1>
+                <div>
+                    <label>Email: </label><input type="text" value={email} onChange={(e) => handleEmail(e)} /><br/>
+                    <label>Password: </label><input type="text" value={pass} onChange={(e) => handlePass(e)} /><br/>
+                    <button onClick={handleLogin}>Login</button>
+                </div>
+            </div>
+            <div className="form createAccountForm">
+                <h1>Create Account</h1>
+                <div>
+                    <label>Email: </label><input type="text" value={newEmail} onChange={(e) => handleNewEmail(e)} /><br/>
+                    <label>Password: </label><input type="text" value={newPass} onChange={(e) => handleNewPass(e)} /><br/>
+                    <button onClick={handleCreateAccount}>Login</button>
+                </div>
             </div>
             <div>{msg}</div>
         </div>
