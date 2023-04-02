@@ -11,14 +11,6 @@
                     3
                 ]
             }
-        },
-        "asldfkjasdlfkj": {
-            "pass": "$2a$10$CwTycUXWue0Thq9StjUM0uCrbpnlf5UkbcNln2XbRqyfEWrEddaCa",
-            "user": {
-                "email": "asldfkjasdlfkj",
-                "funds": 0,
-                "portfolios": []
-            }
         }
     }
 }

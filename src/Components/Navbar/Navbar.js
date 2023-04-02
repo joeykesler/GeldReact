@@ -164,7 +164,16 @@ function Navbar() {
                   </Typography>
                 </Button>
                 <Button variant="contained" sx={{ color: "rgb(0, 82, 255)" }}>
-                  <Typography sx={{ color: "white" }}>Sign up</Typography>
+                  <Typography 
+                  component="a" 
+                  href="/login?signup" 
+                  sx={{ 
+                    color: "white",
+                    textDecoration: "none"
+                  }}
+                  >
+                    Sign up
+                  </Typography>
                 </Button>
               </Box>
             )}
