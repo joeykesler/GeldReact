@@ -13,7 +13,7 @@ function Stocks() {
 
     useEffect(() => {
         async function getStocks() {
-            const result = await fetch('./stocks.json')
+            const result = await fetch('http://localhost:3001/stocks')
             .then(res => {
                 return res.json();
             }).then(data => {
@@ -22,7 +22,6 @@ function Stocks() {
             });
         }
         getStocks();
-        console.log(allStocks);
     }, []);
 
 

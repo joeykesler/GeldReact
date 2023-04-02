@@ -22,10 +22,15 @@ function Login() {
     
     // Get All Users
     useEffect(() => {
-        fetch("./users.json")
-        .then(res => {
-            return res.json();
-        }).then(data => setUsers(data.data));
+        async function getUsers() {
+            await fetch("http://localhost:3001/users")
+            .then(res => {
+                return res.json();
+            }).then(data => {
+                setUsers(data.data)
+            });
+        }
+        getUsers();
     }, []);
     
     // Update local email var
@@ -77,8 +82,7 @@ function Login() {
                 }
             };
             setUsers(tempUsers);
-            console.log("users", users);
-            fetch('http://localhost:3000/users.json', {
+            fetch('http://localhost:3001/users', {
                 method: 'POST',
                 body: JSON.stringify({"data": users}),
                 headers: {
