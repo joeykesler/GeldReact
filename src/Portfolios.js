@@ -17,6 +17,7 @@ function Portfolios() {
     const [stocks, setStocks] = useState({});
     const [showPortfolio, setShowPortfolio] = useState(false);
     const [selectedPortfolio, setSelectedPortfolio] = useState({});
+    const [newName, setNewName] = useState("");
 
     useEffect(() => {
         async function getPortfolios() {
@@ -42,6 +43,14 @@ function Portfolios() {
         handleShowPortfolio();
     }
 
+    function handleNewName(e) {
+        setNewName(e.target.value);
+    }
+
+    function handleCreatePortfolio() {
+        
+    }
+
 
     return (
         <div>
@@ -53,6 +62,13 @@ function Portfolios() {
                     <ListItemText primary={"$"+portfolio.value} />
                 </ListItem>
             ))}
+            {showForm && 
+                <div>
+                    <h2>Create Portfolio</h2>
+                    <label>Name: </label><input type="text" value={newName} onChange={(e) => handleNewName(e)} />
+                    <button onClick={() => handleCreatePortfolio}>Create Portfolio</button>
+                </div>
+            }
         </div>
     )
 
