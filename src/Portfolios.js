@@ -48,7 +48,7 @@ function Portfolios() {
     }
 
     function handleCreatePortfolio() {
-        
+
     }
 
 
@@ -62,13 +62,13 @@ function Portfolios() {
                     <ListItemText primary={"$"+portfolio.value} />
                 </ListItem>
             ))}
-            {showForm && 
+            {/* {showForm && 
                 <div>
                     <h2>Create Portfolio</h2>
                     <label>Name: </label><input type="text" value={newName} onChange={(e) => handleNewName(e)} />
                     <button onClick={() => handleCreatePortfolio}>Create Portfolio</button>
                 </div>
-            }
+            } */}
         </div>
     )
 
