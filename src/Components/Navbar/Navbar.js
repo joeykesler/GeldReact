@@ -154,7 +154,7 @@ function Navbar() {
                 <Button variant="outline">
                   <Typography
                     component="a"
-                    href="/login"
+                    href="/account"
                     sx={{
                       color: "rgb(0, 82, 255)",
                       textDecoration: "none",
@@ -166,7 +166,7 @@ function Navbar() {
                 <Button variant="contained" sx={{ color: "rgb(0, 82, 255)" }}>
                   <Typography 
                   component="a" 
-                  href="/login?signup" 
+                  href="/account?signup" 
                   sx={{ 
                     color: "white",
                     textDecoration: "none"
