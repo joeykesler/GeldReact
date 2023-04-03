@@ -19,7 +19,6 @@ function Login(props) {
 
     // Object Variables
     const [users, setUsers] = useState({});
-    const [currentUser, setCurrentUser] = useState({});
     
     // Get All Users
     useEffect(() => {
@@ -63,9 +62,9 @@ function Login(props) {
         let user = users[email];
         if(user!==undefined && users[email].pass === hashedPassword) {
             setMsg("Login Successful");
-            setCurrentUser(user);
-            localStorage.setItem("currentUser", currentUser);
-            window.location.href = "/Dashboard";
+            localStorage.setItem("currentUser", JSON.stringify(user.user));
+            console.log(localStorage.getItem("currentUser"));
+            window.location.href = "/portfolios";
         } else {
             console.log(users);
             console.log(user);
@@ -109,7 +108,7 @@ function Login(props) {
                 <div>
                     <label>Email: </label><input type="text" value={email} onChange={(e) => handleEmail(e)} /><br/>
                     <label>Password: </label><input type="text" value={pass} onChange={(e) => handlePass(e)} /><br/>
-                    <button onClick={handleLogin}>Login</button>
+                    <button onClick={() => handleLogin()}>Login</button>
                 </div>
             </div>}
             {isSignup && <div className="form createAccountForm">

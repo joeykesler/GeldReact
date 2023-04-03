@@ -5,6 +5,7 @@ import Dashboard from "./Pages/Dashboard";
 import Explore from "./Pages/Explore";
 import Login from "./Login";
 import Stocks from "./Stocks";
+import Portfolios from "./Portfolios";
 function App() {
   return (
     <div>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/Explore" element={<Explore />} />
         <Route path="/login" element={<Login />} />
         <Route path="/stocks" element={<Stocks />} />
+        <Route path="/portfolios" element={<Portfolios />} />
       </Routes>
     </div>
   );
