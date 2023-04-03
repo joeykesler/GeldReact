@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 
 
 
-function Login(props) {
+function Account(props) {
 
     // Page Variables
     const [email, setEmail] = useState("");
@@ -93,7 +93,7 @@ function Login(props) {
                   'Content-Type': 'application/json'
                 }
             });
-            window.location.href="/login";
+            window.location.href="/account";
 
         } else {
             setMsg("User Already Exists");
@@ -124,4 +124,4 @@ function Login(props) {
     );
 }
 
-export default Login;
+export default Account;

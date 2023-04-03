@@ -1,6 +1,5 @@
 import Navbar from "./Components/Navbar/Navbar";
 import { useState, useEffect } from 'react';
-import StockCard from "./Components/StockCard";
 import React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -28,15 +27,6 @@ function Stocks() {
     return(
         <div>
             <Navbar />
-            
-            {/* <div className="stocksWrapper">
-                {allStocks.map((stock, index) => {
-                    console.log(stock);
-                    return(
-                        <StockCard key={index} stock={stock} />
-                    )
-                })}
-            </div> */}
             <List>
                 {allStocks.map((stock, index) => (
                 <ListItem key={index}  className="stocksList">
