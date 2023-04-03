@@ -32,9 +32,28 @@ app.get('/portfolios', (req, res) => {
 
 app.post('/portfolios', express.json(), (req, res) => {
     console.log(req.body);
-    fs.writeFile('./db/portfolios.json', JSON.stringify(req.body, null, 4), (err, data) => {
-        if(!err) res.send(data);
-    })
+
+    let user = req.body.user;
+    let portfolios = req.body.portfolios
+    console.log(user);
+    console.log(portfolios);
+    // fs.writeFile('./db/portfolios.json', JSON.stringify(req.body, null, 4), (err, data) => {
+    //     if(!err) res.send(data);
+    // })
+
+    const fs = require('fs');
+    const fileName = './db/portfolios.json';
+    const file = require(fileName);
+    // console.log(file);
+        
+    file.Portfolios[user] = portfolios;
+    console.log(file.Portfolios[user]);
+        
+    fs.writeFile(fileName, JSON.stringify(file, null, 4), function writeJSON(err) {
+    if (err) return console.log(err);
+    console.log(JSON.stringify(file));
+    console.log('writing to ' + fileName);
+    });
 });
 
 app.get('/stocks', (req, res) => {

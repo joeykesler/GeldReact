@@ -14,10 +14,12 @@ import './Stocks.css';
 function Portfolios() {
 
     const [userPortfolios, setUserPortfolios] = useState([]);
+    const [allPortfolios, setAllPortfolios] = useState([]);
     const [stocks, setStocks] = useState({});
     const [showPortfolio, setShowPortfolio] = useState(false);
     const [selectedPortfolio, setSelectedPortfolio] = useState({});
     const [newName, setNewName] = useState("");
+    const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
         async function getPortfolios() {
@@ -29,6 +31,7 @@ function Portfolios() {
             console.log(result);
             let currentUser = JSON.parse(localStorage.getItem("currentUser"));
             console.log(currentUser.email);
+            if(result[currentUser.email])
             setUserPortfolios(result[currentUser.email]);
         }
         getPortfolios();
@@ -45,10 +48,39 @@ function Portfolios() {
 
     function handleNewName(e) {
         setNewName(e.target.value);
+        console.log(newName)
+    }
+
+    function handleShowForm() {
+        setShowForm(!showForm);
+        console.log(showForm);
     }
 
     function handleCreatePortfolio() {
-
+        console.log(newName);
+        console.log(userPortfolios);
+        let portfolios = userPortfolios;
+        portfolios.push({
+            id: portfolios.length,
+            name: newName,
+            stocks: [],
+            value: 0
+        });
+        let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        let email = currentUser.email;
+        fetch('http://localhost:3001/portfolios', {
+            method: 'POST',
+            body: JSON.stringify(
+                {
+                    "user": email,
+                    "portfolios": portfolios
+                }
+                ),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log(portfolios);
     }
 
 
@@ -62,13 +94,14 @@ function Portfolios() {
                     <ListItemText primary={"$"+portfolio.value} />
                 </ListItem>
             ))}
-            {/* {showForm && 
+            <button onClick={() => handleShowForm()}>New Portfolio</button>
+            {showForm && 
                 <div>
                     <h2>Create Portfolio</h2>
                     <label>Name: </label><input type="text" value={newName} onChange={(e) => handleNewName(e)} />
-                    <button onClick={() => handleCreatePortfolio}>Create Portfolio</button>
+                    <button onClick={() => handleCreatePortfolio()}>Create Portfolio</button>
                 </div>
-            } */}
+            }
         </div>
     )
 
