@@ -39,10 +39,12 @@ function Portfolio(props) {
         console.log(updatedPrice);
         
         let ownedStocks = [...portfolioStocks];
+        let value = 0;
         ownedStocks.forEach((stock) => {
             stock.value = updatedPrice[stock.id];
+            value+=stock.value;
         });
-
+        portfolio.value = value;
         setAllStocks(stocks);
         setPortfolioStocks(ownedStocks);
         
@@ -55,7 +57,7 @@ function Portfolio(props) {
         arr.splice(portfolioStocks.indexOf(stock), 1);
         setPortfolioStocks(arr);
         user.funds += stock.value;
-        props.portfolio.value += stock.value;
+        props.portfolio.value -= stock.value;
         setFunds(Number((user.funds).toFixed(2)));
         console.log(user);
         updateUser(user);
@@ -71,7 +73,7 @@ function Portfolio(props) {
         setPortfolioStocks(arr);
         console.log(portfolioStocks);
         user.funds -= stock.value;
-        props.portfolio.value -= stock.value;
+        props.portfolio.value += stock.value;
         setFunds(Number((user.funds).toFixed(2)));
         updateUser(user);
     }

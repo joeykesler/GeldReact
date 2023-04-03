@@ -3,17 +3,17 @@
         {
             "id": 0,
             "name": "Apple",
-            "value": 200.12
+            "value": 150
         },
         {
             "id": 1,
             "name": "Microsoft",
-            "value": 128.98
+            "value": 50
         },
         {
             "id": 2,
             "name": "Google",
-            "value": 89.88
+            "value": 100
         }
     ]
 }
