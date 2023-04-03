@@ -1,0 +1,16 @@
+{
+    "data": {
+        "user@email.com": {
+            "pass": "$2a$10$CwTycUXWue0Thq9StjUM0uVcaYLhxDhxw/on5O4CIwF0K5Yph9pCK",
+            "user": {
+                "email": "user@email.com",
+                "funds": 100,
+                "portfolios": [
+                    1,
+                    2,
+                    3
+                ]
+            }
+        }
+    }
+}
