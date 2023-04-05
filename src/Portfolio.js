@@ -34,6 +34,7 @@ function Portfolio(props) {
         stocks.forEach((stock) => {
             let variation = Math.floor(Math.random() * 10) - 5;
             stock.value += variation;
+            stock.value = Math.max(1, stock.value);
             updatedPrice[stock.id] = stock.value;
         });
         console.log(updatedPrice);
