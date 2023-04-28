@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
@@ -15,7 +14,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import { Link } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -96,21 +94,12 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function MiniDrawer({ onStockSelect }) {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [signedInStatus, setSignInStatus] = React.useState(true);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleOpenUserMenu = (event) => {
     console.log(event.currentTarget);
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-    console.log("clicked");
   };
 
   const handleCloseUserMenu = () => {
@@ -227,7 +216,14 @@ export default function MiniDrawer({ onStockSelect }) {
                 >
                   {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center" href={"/"+setting} component="a" style={{ textDecoration: "none", color: "black" }}>{setting}</Typography>
+                      <Typography
+                        textAlign="center"
+                        href={"/" + setting}
+                        component="a"
+                        style={{ textDecoration: "none", color: "black" }}
+                      >
+                        {setting}
+                      </Typography>
                     </MenuItem>
                   ))}
                   <MenuItem onClick={handleLogout}>
@@ -263,6 +259,8 @@ export default function MiniDrawer({ onStockSelect }) {
         <List>
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton
+              omponent={Link}
+              to="/Dashboard"
               sx={{
                 minHeight: 48,
                 justifyContent: "center",
@@ -281,26 +279,7 @@ export default function MiniDrawer({ onStockSelect }) {
               <ListItemText sx={{ opacity: 0 }} />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: "auto",
-                  justifyContent: "center",
-                }}
-              >
-                {<ShowChartIcon />}
-              </ListItemIcon>
-              <ListItemText sx={{ opacity: 0 }} />
-            </ListItemButton>
-          </ListItem>
+
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton
               component={Link}
