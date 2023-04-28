@@ -31,21 +31,6 @@ function LandingPage() {
                 and manage crypto.
               </Typography>
             </Box>
-            <Box>
-              <TextField
-                required
-                id="outlined-required"
-                label="Required"
-                defaultValue="Hello World"
-                sx={{ width: "60%", mr: "25px" }}
-              />
-              <Button
-                variant="contained"
-                sx={{ height: "100%", color: "rgb(0, 82, 255)" }}
-              >
-                <Typography color={"white"}>SignUp</Typography>
-              </Button>
-            </Box>
           </Stack>
 
           <div className="SignUp"></div>
