@@ -206,9 +206,6 @@ function Navbar() {
           </Box>
         </Toolbar>
       </Container>
-      <Routes>
-        <Route path="/Dashboard" element={<Dashboard />} />
-      </Routes>
     </AppBar>
   );
 }

@@ -23,12 +23,12 @@
         {
             "id": 4,
             "name": "Microsoft Fractional",
-            "value": "10"
+            "value": 10
         },
         {
             "id": 5,
             "name": "Google Fractional",
-            "value": "10"
+            "value": 10
         }
     ]
 }
