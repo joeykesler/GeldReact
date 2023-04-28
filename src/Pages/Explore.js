@@ -41,7 +41,7 @@ function Explore() {
           </Stack>
         </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "center" }}>
+        {/* <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Autocomplete
             freeSolo
             sx={{ width: "40%" }}
@@ -59,7 +59,7 @@ function Explore() {
               />
             )}
           />
-        </Box>
+        </Box> */}
       </Stack>
     </Box>
   );

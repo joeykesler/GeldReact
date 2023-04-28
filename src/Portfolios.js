@@ -100,8 +100,8 @@ function Portfolios() {
                     <ListItemText primary={"$"+portfolio.value} />
                 </ListItem>
             ))}
-            <button onClick={() => handleShowForm()}>New Portfolio</button>
-            {showForm && 
+            {!showPortfolio && <button onClick={() => handleShowForm()}>New Portfolio</button>}
+            {showForm &&
                 <div>
                     <h2>Create Portfolio</h2>
                     <label>Name: </label><input type="text" value={newName} onChange={(e) => handleNewName(e)} />
