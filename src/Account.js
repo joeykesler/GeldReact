@@ -73,7 +73,10 @@ function Account(props) {
     }
 
     function handleCreateAccount() {
-        
+        if(newEmail=='' || newPass=='') {
+            setMsg("Enter valid username and password");
+            return;
+        }
         if(users[newEmail] == undefined) {
             const hashedPassword = bcrypt.hashSync(newPass, "$2a$10$CwTycUXWue0Thq9StjUM0u");
             let tempUsers = users;
@@ -81,7 +84,7 @@ function Account(props) {
                 "pass": hashedPassword,
                 "user": {
                     "email": newEmail,
-                    "funds": 0,
+                    "funds": 1000,
                     "portfolios": []
                 }
             };
@@ -106,16 +109,16 @@ function Account(props) {
             {!isSignup && <div className="form loginForm">
                 <h1>Login</h1>
                 <div>
-                    <label>Email: </label><input type="text" value={email} onChange={(e) => handleEmail(e)} /><br/>
-                    <label>Password: </label><input type="text" value={pass} onChange={(e) => handlePass(e)} /><br/>
+                    <label>Username: </label><input type="text" value={email} onChange={(e) => handleEmail(e)} /><br/>
+                    <label>Password: </label><input type="password" value={pass} onChange={(e) => handlePass(e)} /><br/>
                     <button onClick={() => handleLogin()}>Login</button>
                 </div>
             </div>}
             {isSignup && <div className="form createAccountForm">
                 <h1>Create Account</h1>
                 <div>
-                    <label>Email: </label><input type="text" value={newEmail} onChange={(e) => handleNewEmail(e)} /><br/>
-                    <label>Password: </label><input type="text" value={newPass} onChange={(e) => handleNewPass(e)} /><br/>
+                    <label>Username: </label><input type="text" value={newEmail} onChange={(e) => handleNewEmail(e)} /><br/>
+                    <label>Password: </label><input type="password" value={newPass} onChange={(e) => handleNewPass(e)} /><br/>
                     <button onClick={handleCreateAccount}>Create Account</button>
                 </div>
             </div>}

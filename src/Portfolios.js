@@ -16,6 +16,7 @@ function Portfolios() {
     const [userPortfolios, setUserPortfolios] = useState([]);
     const [allPortfolios, setAllPortfolios] = useState([]);
     const [stocks, setStocks] = useState({});
+    const [msg, setMsg] = useState("");
     const [showPortfolio, setShowPortfolio] = useState(false);
     const [selectedPortfolio, setSelectedPortfolio] = useState({});
     const [newName, setNewName] = useState("");
@@ -57,6 +58,10 @@ function Portfolios() {
     }
 
     function handleCreatePortfolio() {
+        if(newName=='') {
+            setMsg("Enter a valid name");
+            return;
+        }
         console.log(newName);
         console.log(userPortfolios);
         let portfolios = userPortfolios;
@@ -81,6 +86,7 @@ function Portfolios() {
             }
         });
         console.log(portfolios);
+        window.location.href = '/portfolios';
     }
 
 
@@ -100,7 +106,11 @@ function Portfolios() {
                     <h2>Create Portfolio</h2>
                     <label>Name: </label><input type="text" value={newName} onChange={(e) => handleNewName(e)} />
                     <button onClick={() => handleCreatePortfolio()}>Create Portfolio</button>
+                    <div>
+                        {msg}
+                    </div>
                 </div>
+                
             }
         </div>
     )

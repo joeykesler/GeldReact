@@ -32,7 +32,7 @@ function Portfolio(props) {
         let stocks = [...allStocks];
         let updatedPrice = {};
         stocks.forEach((stock) => {
-            let variation = Math.floor(Math.random() * 10) - 5;
+            let variation = Math.round(Math.random() * 10) - 5;
             stock.value += variation;
             stock.value = Math.max(1, stock.value);
             updatedPrice[stock.id] = stock.value;
@@ -67,7 +67,7 @@ function Portfolio(props) {
     function buyStock(stock) {
         // console.log(stock);
         let user = currentUser;
-        // if((user.funds -= stock.value) < 0) return;
+        if((user.funds - stock.value) < 0) return;
         portfolio.stocks.push(stock.id);
         let arr = portfolioStocks;
         arr.push(stock);

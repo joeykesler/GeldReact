@@ -15,8 +15,8 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Link, Routes, Route, RouterLink } from "react-router-dom";
 import Dashboard from "../../Pages/Dashboard";
 
-const pages = ["Explore", "Dashboard", "News"];
-const settings = ["Profile", "Account", "Dashboard"];
+const pages = ["Explore", "Dashboard"];
+const settings = ["Portfolios", "Dashboard"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -196,7 +196,7 @@ function Navbar() {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center" href={"/"+setting} component="a" style={{ textDecoration: "none", color: "black" }}>{setting}</Typography>
                 </MenuItem>
               ))}
               <MenuItem onClick={handleLogout}>

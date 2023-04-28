@@ -153,8 +153,8 @@ export default function MiniDrawer({ onStockSelect }) {
   }, []);
   const theme = useTheme();
 
-  const pages = ["Explore", "Dashboard", "News"];
-  const settings = ["Profile", "Account", "Dashboard"];
+  const pages = ["Explore", "Dashboard"];
+  const settings = ["Portfolios", "Dashboard"];
 
   return (
     <Box>
@@ -227,7 +227,7 @@ export default function MiniDrawer({ onStockSelect }) {
                 >
                   {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+                      <Typography textAlign="center" href={"/"+setting} component="a" style={{ textDecoration: "none", color: "black" }}>{setting}</Typography>
                     </MenuItem>
                   ))}
                   <MenuItem onClick={handleLogout}>
